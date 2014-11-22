@@ -1,0 +1,6 @@
+name: TacoAPI
+main: com.kill3rtaco.tacoapi.plugin.TacoAPIPlugin
+description: Bukkit plugin API
+version: 3
+authors: [KILL3RTACO]
+softdepend: [WorldEdit, Vault]
