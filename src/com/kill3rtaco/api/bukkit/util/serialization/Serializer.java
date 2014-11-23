@@ -16,7 +16,7 @@ public class Serializer {
 	 * 
 	 * @param object
 	 *            The object to serialize
-	 * @return
+	 * @return the object as a string, newlines and indentation included
 	 */
 	public static String toString(JSONObject object) {
 		return toString(object, true);
@@ -29,7 +29,7 @@ public class Serializer {
 	 *            The object to serialize
 	 * @param pretty
 	 *            Whether to add new lines or tabs
-	 * @return
+	 * @return the object as a string
 	 */
 	public static String toString(JSONObject object, boolean pretty) {
 		return toString(object, pretty, 5);
@@ -44,7 +44,7 @@ public class Serializer {
 	 *            Whether to add new lines or tabs
 	 * @param tabSize
 	 *            The tab size in spaces
-	 * @return
+	 * @return the object as a string
 	 */
 	public static String toString(JSONObject object, boolean pretty, int tabSize) {
 		try {

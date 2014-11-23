@@ -291,11 +291,14 @@ public class ItemUtils {
 		}
 		
 		/**
+		 * Get a friendly display name for a block or item type
 		 * 
 		 * @param id
+		 *            the id
 		 * @param damage
-		 * @return
-		 * @since
+		 *            the damage
+		 * @return the display name
+		 * @since TacoAPI/Bukkit 2.0
 		 */
 		public static DisplayName getDisplayName(int id, int damage) {
 			for (DisplayName dn : DisplayName.values())

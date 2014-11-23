@@ -32,11 +32,16 @@ public class TimeUtils {
 	 * Get future time.
 	 * 
 	 * For instance, to get the time it would be 3 hours from now:<br/>
-	 * <center>{@code futureTime(Time.HOUR, 3)}</center>
+	 * 
+	 * <pre>
+	 * futureTime(Time.HOUR, 3)
+	 * </pre>
 	 * 
 	 * @param base
+	 *            the base
 	 * @param modifier
-	 * @return
+	 *            the modifier
+	 * @return future time
 	 */
 	public static long futureTime(Time base, int modifier) {
 		long now = System.currentTimeMillis();

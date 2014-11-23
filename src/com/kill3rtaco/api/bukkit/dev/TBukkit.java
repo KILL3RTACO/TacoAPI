@@ -117,8 +117,8 @@ public class TBukkit {
 	 * If it is not, <i>all</i> features are enabled
 	 * 
 	 * @return whether TBukkit is enabled or not
-	 * @see {@link #enable()}
-	 * @see {@link #disable()}
+	 * @see #enable()
+	 * @see #disable()
 	 * @since TBukkit 1.0
 	 */
 	public static boolean isEnabled() {
@@ -176,7 +176,7 @@ public class TBukkit {
 	 * @param version
 	 *            The string to test
 	 * @return if the given String match the regex
-	 * @see {@link TBukkit#VERSION_REGEX}
+	 * @see TBukkit#VERSION_REGEX
 	 * @since TBukkit 1.0
 	 */
 	public static boolean validVersionString(String version) {
@@ -221,7 +221,7 @@ public class TBukkit {
 	 *         determined to be the 'latest' version
 	 * @throws IllegalArgumentException
 	 *             if one of the Strings does not match {@link #VERSION_REGEX}
-	 * @see {@link TBukkit#VERSION_REGEX}
+	 * @see TBukkit#VERSION_REGEX
 	 * @since TBukkit 1.0
 	 */
 	public static String latestVersion(String v1, String v2) {

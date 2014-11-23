@@ -30,8 +30,8 @@ public abstract class InventoryButtonRunnable implements Runnable {
 	/**
 	 * Get the button this runnable belongs to
 	 * 
-	 * @return
-	 * @since
+	 * @return the button this runnable belongs to
+	 * @since TacoAPI/Bukkit 3.0
 	 */
 	public InventoryButton getButton() {
 		return _button;
@@ -63,8 +63,8 @@ public abstract class InventoryButtonRunnable implements Runnable {
 	 * because, if it was open on the same tick, there would be noticeable
 	 * issues for the player.
 	 * 
-	 * @param menuThe
-	 *            menu to show
+	 * @param menu
+	 *            the menu to show
 	 * @param showTo
 	 *            who to show the menu to
 	 * @param plugin

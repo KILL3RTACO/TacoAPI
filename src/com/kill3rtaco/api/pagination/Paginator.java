@@ -24,6 +24,7 @@ public class Paginator<T> implements Iterable<T> {
 	 * Construct a new Paginator and set the elements shown per page.
 	 * 
 	 * @param elementsPerPage
+	 *            elementsPerPage the maximum amount of elements per page
 	 * @since TacoAPI/Pagination 1.0
 	 */
 	public Paginator(int elementsPerPage) {
@@ -33,7 +34,9 @@ public class Paginator<T> implements Iterable<T> {
 	/**
 	 * 
 	 * @param elementsPerPage
-	 * @param append
+	 *            the maximum amount of elements per page
+	 * @param elements
+	 *            the elements that should be added immediately
 	 * @since TacoAPI/Pagination 1.0
 	 */
 	public Paginator(int elementsPerPage, Collection<T> elements) {
@@ -73,9 +76,9 @@ public class Paginator<T> implements Iterable<T> {
 	 *            The elements to append
 	 * @since TacoAPI/Pagination 1.0
 	 */
-	public void appendAll(Collection<T> elements) {
-		if (elements != null && !elements.isEmpty()) {
-			for (T t : elements) {
+	public void appendAll(Collection<T> append) {
+		if (append != null && !append.isEmpty()) {
+			for (T t : append) {
 				append(t);
 			}
 		}

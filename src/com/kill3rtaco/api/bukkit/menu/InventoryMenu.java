@@ -32,10 +32,8 @@ public class InventoryMenu implements InventoryHolder {
 	private int								_maxRowIndex	= 0;
 	
 	/**
-	 * Create a new InventoryMenu with the given amount of rows
+	 * Create a new InventoryMenu
 	 * 
-	 * @param rows
-	 *            the amount of rows
 	 * @since TacoAPI/Bukkit 3.0
 	 */
 	public InventoryMenu() {
@@ -43,12 +41,11 @@ public class InventoryMenu implements InventoryHolder {
 	}
 	
 	/**
-	 * Create a new InventoryMenu with the given amount of rows and a set title
+	 * Create a new (titled) InventoryMenu. The title cannot be more than 32
+	 * characters long (including color codes)
 	 * 
 	 * @param title
 	 *            the title of the menu
-	 * @param rows
-	 *            the amount of rows
 	 * @since TacoAPI/Bukkit 3.0
 	 */
 	public InventoryMenu(String title) {

@@ -123,7 +123,7 @@ public class InventoryToggleButton extends InventoryButton {
 	 * 
 	 * @since TacoAPI/Bukkit 3.0
 	 * @return true if the state was toggled
-	 * @see InventoryButton#onClick()
+	 * @see InventoryButton#onClick(int, InventoryButtonRunnable)
 	 */
 	public boolean onClick(int clickType, Player player) {
 		if (super.onClick(clickType, player)) {

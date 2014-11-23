@@ -200,8 +200,8 @@ public class InventoryButton {
 	 * "off"</li>
 	 * </ul>
 	 * 
-	 * @param tooltip
-	 *            the tooltip
+	 * @param desc
+	 *            the description
 	 * @since TacoAPI/Bukkit 3.0
 	 */
 	public void setDescription(String desc) {

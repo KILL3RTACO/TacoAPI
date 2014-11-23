@@ -51,7 +51,7 @@ public class EnchantmentSerialization {
 	 * 
 	 * @param enchantments
 	 *            The Enchantment Map to serialize
-	 * @return
+	 * @return the deserialized enchantments
 	 */
 	public static String serializeEnchantments(Map<Enchantment, Integer> enchantments) {
 		String serialized = "";

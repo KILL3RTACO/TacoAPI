@@ -48,12 +48,12 @@ public class PlayerStatsSerialization {
 				root.put("food", player.getFoodLevel());
 			if (shouldSerialize("gamemode"))
 				root.put("gamemode", player.getGameMode().ordinal());
-			if (shouldSerialize("health"))
-				root.put("health", player.getHealthScale());
+//			if (shouldSerialize("health"))
+//				root.put("health", player.getHealthScale());
 			if (shouldSerialize("level"))
 				root.put("level", player.getLevel());
-			if (shouldSerialize("potion-effects"))
-				root.put("potion-effects", PotionEffectSerialization.serializeEffects(player.getActivePotionEffects()));
+//			if (shouldSerialize("potion-effects"))
+//				root.put("potion-effects", PotionEffectSerialization.serializeEffects(player.getActivePotionEffects()));
 			if (shouldSerialize("saturation"))
 				root.put("saturation", player.getSaturation());
 			return root;

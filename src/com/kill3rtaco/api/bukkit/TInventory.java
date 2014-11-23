@@ -62,8 +62,8 @@ public class TInventory {
 	/**
 	 * Gives the player items
 	 * 
-	 * @param player
-	 *            the player to give items to
+	 * @param inv
+	 *            the inventory to add the items to
 	 * @param items
 	 *            the items to give
 	 * @return false if the player doesn't have enough room to hold the items in

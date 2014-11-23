@@ -32,7 +32,7 @@ public class PlayerSerialization {
 	 */
 	public static JSONObject serializePlayer(Player player) {
 		try {
-			JSONObject root = new JSONObject();
+			JSONObject root = LivingEntitySerialization.serializeEntity(player);
 			if (SerializationConfig.getShouldSerialize("player-ender-chest"))
 				root.put("ender-chest", InventorySerialization.serializeInventory(player.getEnderChest()));
 			if (SerializationConfig.getShouldSerialize("player.inventory"))

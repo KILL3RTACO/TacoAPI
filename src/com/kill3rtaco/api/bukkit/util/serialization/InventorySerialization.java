@@ -133,7 +133,7 @@ public class InventorySerialization {
 	 * Get the string form of the serialized Inventory. This produces the exact
 	 * same results as <code>serializeInventory(inventory).toString()</code>
 	 * 
-	 * @param inv
+	 * @param inventory
 	 *            The Inventory to serialize
 	 * @return The String form of the serialized Inventory
 	 */
@@ -146,7 +146,7 @@ public class InventorySerialization {
 	 * is <code>true</code> then the resulting String will include whitespace
 	 * and tabs, with each tab having a size of 5.
 	 * 
-	 * @param inv
+	 * @param inventory
 	 *            The Inventory to serialize
 	 * @param pretty
 	 *            Whether the resulting string should be 'pretty' or not
@@ -161,7 +161,7 @@ public class InventorySerialization {
 	 * is <code>true</code> then the resulting String will include whitespace
 	 * and tabs, with each tab having a size of <code>indentFactor</code>.
 	 * 
-	 * @param inv
+	 * @param inventory
 	 *            The Inventory to serialize
 	 * @param pretty
 	 *            Whether the resulting string should be 'pretty' or not
@@ -199,8 +199,8 @@ public class InventorySerialization {
 	 * <code>pretty</code> is <code>true</code> then the resulting String will
 	 * include whitespace and tabs, with each tab having a size of 5.
 	 * 
-	 * @param inv
-	 *            The Inventory to serialize
+	 * @param contents
+	 *            The Inventory contents to serialize
 	 * @param pretty
 	 *            Whether the resulting string should be 'pretty' or not
 	 * @return The String form of the serialized Inventory
@@ -215,8 +215,8 @@ public class InventorySerialization {
 	 * include whitespace and tabs, with each tab having a size of
 	 * <code>indentFactor</code>.
 	 * 
-	 * @param inv
-	 *            The Inventory to serialize
+	 * @param contents
+	 *            The Inventory contents to serialize
 	 * @param pretty
 	 *            Whether the resulting string should be 'pretty' or not
 	 * @param indentFactor
@@ -240,6 +240,7 @@ public class InventorySerialization {
 	 * Serialize an ItemStack array.
 	 * 
 	 * @param contents
+	 *            The Inventory contents to serialize
 	 * @return A JSONArray representing the serialized ItemStack array
 	 */
 	public static JSONArray serializeInventory(ItemStack[] contents) {
@@ -358,8 +359,8 @@ public class InventorySerialization {
 	 * Sets the Inventory using an ItemStack array constructed from a JSONArray
 	 * using the given String as a reference.
 	 * 
-	 * @param holder
-	 *            The InventoryHolder to which the Inventory will be set
+	 * @param inventory
+	 *            The Inventory whose contents should be set
 	 * @param inv
 	 *            The reference JSON string
 	 */
@@ -374,8 +375,8 @@ public class InventorySerialization {
 	/**
 	 * Sets the Inventory using an ItemStack array constructed from a JSONArray.
 	 * 
-	 * @param holder
-	 *            The InventoryHolder to which the Inventory will be set
+	 * @param inventory
+	 *            The Inventory whose contents should be set
 	 * @param inv
 	 *            The reference JSONArray
 	 */
@@ -394,8 +395,8 @@ public class InventorySerialization {
 	 * Sets the players Inventory using an ItemStack array constructed from a
 	 * JSONObject using the given String as a reference.
 	 * 
-	 * @param holder
-	 *            The InventoryHolder to which the Inventory will be set
+	 * @param player
+	 *            the player whose Inventory should be set
 	 * @param inv
 	 *            The reference JSON string
 	 */
@@ -411,8 +412,8 @@ public class InventorySerialization {
 	 * Sets the Inventory using an ItemStack array constructed from a
 	 * JSONObject.
 	 * 
-	 * @param holder
-	 *            The InventoryHolder to which the Inventory will be set
+	 * @param player
+	 *            The Player whose Inventory will be set
 	 * @param inv
 	 *            The reference JSONArray
 	 */

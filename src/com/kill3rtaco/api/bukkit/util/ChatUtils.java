@@ -349,16 +349,16 @@ public final class ChatUtils {
 	 * 
 	 * @param str
 	 *            The string to shorten
-	 * @param length
+	 * @param maxLength
 	 *            The maximum length
 	 * @return the shortened string
 	 * @since TacoAPI/Bukkit 2.0
 	 */
-	public static String maxLength(String str, int maxLenghth) {
-		if (str.length() < maxLenghth) {
+	public static String maxLength(String str, int maxLength) {
+		if (str.length() < maxLength) {
 			return str;
-		} else if (maxLenghth > 3) {
-			return str.substring(0, maxLenghth - 3) + "...";
+		} else if (maxLength > 3) {
+			return str.substring(0, maxLength - 3) + "...";
 		} else {
 			throw new IllegalArgumentException("Minimum length of 3 characters.");
 		}

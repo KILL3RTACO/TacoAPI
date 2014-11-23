@@ -63,7 +63,7 @@ public class Project implements Cloneable {
 	 * Get the development stage of the project
 	 * 
 	 * @return the development stage
-	 * @see {@link Project.Stage}
+	 * @see Stage
 	 * @since TBukkit 1.0
 	 */
 	public Project.Stage getDevelopmentStage() {

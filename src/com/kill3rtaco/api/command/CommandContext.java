@@ -280,7 +280,7 @@ public abstract class CommandContext {
 	 *            Where to start
 	 * @param endIndex
 	 *            Where to end
-	 * @return
+	 * @return a portion (slice) of the arguments
 	 */
 	public String[] getSlice(int startIndex, int endIndex) {
 		if (startIndex < 0 || startIndex >= _args.length)
@@ -379,8 +379,6 @@ public abstract class CommandContext {
 	 * Print an error to the command sender. This may have the same effect as
 	 * {@link #printMessage(String, Object...)}, depending on the implementation
 	 * 
-	 * @param message
-	 *            The message to send
 	 * @param id
 	 *            The id of the message
 	 * @param args

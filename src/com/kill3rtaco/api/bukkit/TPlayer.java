@@ -448,7 +448,7 @@ public class TPlayer {
 	 *            the player
 	 * @param range
 	 *            the maximum range for the trace
-	 * @param transparant
+	 * @param transparent
 	 *            block types to consider transparent (AIR is always considered
 	 *            transparent)
 	 * @return the block the player is looking at
@@ -483,9 +483,6 @@ public class TPlayer {
 	 *            the player
 	 * @param range
 	 *            the maximum range for the trace
-	 * @param transparant
-	 *            block types to consider transparent (AIR is always considered
-	 *            transparent)
 	 * @return the entity the player is looking at, or null if the player is not
 	 *         looking at an entity
 	 * @since TacoAPI/Bukkit 3.0
@@ -502,7 +499,9 @@ public class TPlayer {
 	 *            the player
 	 * @param range
 	 *            the maximum range for the trace
-	 * 
+	 * @param transparent
+	 *            block types to consider transparent (AIR is always considered
+	 *            transparent)
 	 * @return the entity the player is looking at, or null if the player is not
 	 *         looking at an entity
 	 * @since TacoAPI/Bukkit 3.0

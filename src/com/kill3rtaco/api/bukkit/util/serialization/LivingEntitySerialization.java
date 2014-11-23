@@ -4,7 +4,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 
 import com.kill3rtaco.api.util.json.JSONException;
 import com.kill3rtaco.api.util.json.JSONObject;
@@ -29,16 +28,17 @@ public class LivingEntitySerialization {
 	protected LivingEntitySerialization() {}
 	
 	/**
-	 * Serialize a LivingEntity into a JSONObject. If the given LivingEntity is
-	 * a Player, it is cast as such and redirected to PlayerSerialization.
+	 * Serialize a LivingEntity into a JSONObject.
 	 * 
 	 * @param entity
-	 * @return
+	 *            the entity to serialize
+	 * @return the serialized entity, in the from of a JSONObject
 	 */
+	@SuppressWarnings("deprecation")
 	public static JSONObject serializeEntity(LivingEntity entity) {
-		if (entity instanceof Player) {
-			return PlayerSerialization.serializePlayer((Player) entity);
-		}
+//		if (entity instanceof Player) {
+//			return PlayerSerialization.serializePlayer((Player) entity);
+//		}
 		try {
 			JSONObject root = new JSONObject();
 			if (shouldSerialize("age") && entity instanceof Ageable)

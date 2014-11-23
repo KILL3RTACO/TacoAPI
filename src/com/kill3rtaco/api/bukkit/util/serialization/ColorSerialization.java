@@ -72,7 +72,7 @@ public class ColorSerialization {
 	 * 
 	 * @param color
 	 *            The JSONObject to construct a Color from.
-	 * @return
+	 * @return the deserialized color
 	 */
 	public static Color getColor(JSONObject color) {
 		try {
