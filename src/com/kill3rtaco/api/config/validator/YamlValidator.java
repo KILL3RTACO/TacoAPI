@@ -37,17 +37,17 @@ public class YamlValidator {
 	
 	private boolean validateContainer(YamlNodeContainer schema, YamlNodeContainer container) throws ValidatorException {
 		for (YamlNode n : schema) {
-			if (!validateNode(n, container.getNode(n.getName())))
+			if (!validateNode(container, n, container.getNode(n.getName()), container.getPath() + "." + n.getName()))
 				return false;
 		}
 		return true;
 	}
 	
-	private boolean validateNode(YamlNode schema, YamlNode node) throws ValidatorException {
+	private boolean validateNode(YamlNodeContainer container, YamlNode schema, YamlNode node, String path) throws ValidatorException {
+		boolean required = schema.getBoolean("required", false);
 		if (node == null) {
-			if (schema.getBoolean("required", false))
-				throw new ValidatorException("Node '" + schema.getName() + "' is required but not found (schema: '" + schema.getPath() + "')");
-			return true;
+			if (required)
+				throw new ValidatorException("Node '" + path + "' is required but not found", path, schema.getPath());
 		}
 		
 		String type = schema.getString("type");
@@ -55,9 +55,26 @@ public class YamlValidator {
 			type = "str";
 		
 		if (type.equalsIgnoreCase("list")) {
+			if (node == null && schema.isSet("default")) {
+				YamlNode def = schema.getNode("default");
+				if (!def.isList())
+					throw new ValidatorException("Type mismatch: default for node '" + path + "' is not a list", path, schema.getPath());
+				
+				container.getNode(path, true).set(def.asList());
+			}
+			
 			if (!node.isList())
-				throw new ValidatorException("Type mismatch: node '" + node.getPath() + "' is not a list");
+				throw new ValidatorException("Type mismatch: node '" + node.getPath() + "' is not a list", path, schema.getPath());
 		} else if (type.equalsIgnoreCase("list/str")) {
+			if (node == null && schema.isSet("default")) {
+				YamlNode def = schema.getNode("default");
+				if (!def.isList())
+					throw new ValidatorException("Type mismatch: default value for node '" + path + "' is not a list", path, schema.getPath());
+				
+				container.getNode(path, true).set(def.asStringList());
+				return true;
+			}
+			
 			boolean whitelist;
 			List<String> list;
 			if (schema.isList("whitelist")) {
@@ -73,11 +90,20 @@ public class YamlValidator {
 			List<String> strList = node.asStringList();
 			for (String str : strList) {
 				if (whitelist && !containsIgnoreCase(list, str))
-					throw new ValidatorException("List at '" + node.getPath() + "' contains a non-whitelisted string: '" + str + "'");
+					throw new ValidatorException("List at '" + node.getPath() + "' contains a non-whitelisted string: '" + str + "'", path, schema.getPath());
 				else if (!whitelist && containsIgnoreCase(list, str))
-					throw new ValidatorException("List at '" + node.getPath() + "' contains a blacklisted string: '" + str + "'");
+					throw new ValidatorException("List at '" + node.getPath() + "' contains a blacklisted string: '" + str + "'", path, schema.getPath());
 			}
 		} else if (type.equalsIgnoreCase("list/num")) {
+			if (node == null && schema.isSet("default")) {
+				YamlNode def = schema.getNode("default");
+				if (!def.isList())
+					throw new ValidatorException("Type mismatch: default value for node '" + path + "' is not a list", path, schema.getPath());
+				
+				container.getNode(path, true).set(def.asDoubleList());
+				return true;
+			}
+			
 			List<Double> nums = node.asDoubleList();
 			
 			if (!node.isCollection("ranges"))
@@ -87,14 +113,18 @@ public class YamlValidator {
 			
 			for (double n : nums) {
 				if (!matchesRanges(n, ranges))
-					throw new ValidatorException("Value in list at '" + node.getPath() + "' (" + n + ") does not match any of the given ranges");
+					throw new ValidatorException("Value in list at '" + node.getPath() + "' (" + n + ") does not match any of the given ranges", path, schema.getPath());
 			}
 			
 		} else if (type.equalsIgnoreCase("collection")) {
-			if (!node.isCollection())
-				throw new ValidatorException("Type mismatch: node '" + node.getPath() + "' is not a collection");
-			if (!schema.isSet("collection"))
+			if (node == null && schema.isSet("default")) {
+				YamlNode def = schema.getNode("default");
+				if (!def.isCollection())
+					throw new ValidatorException("Type mismtach: default value for node '" + path + "' is not a collection", path, schema.getPath());
 				return true;
+			}
+			if (!node.isCollection())
+				throw new ValidatorException("Type mismatch: node '" + node.getPath() + "' is not a collection", path, schema.getPath());
 			
 			return validateCollection(schema.getNode("collection"), node.asCollection());
 		} else if (type.equalsIgnoreCase("str")) {
@@ -112,12 +142,12 @@ public class YamlValidator {
 			
 			String str = node.asString();
 			if (whitelist && !containsIgnoreCase(list, str))
-				throw new ValidatorException("String at '" + node.getPath() + "' is not in whitelist");
+				throw new ValidatorException("String at '" + node.getPath() + "' is not in whitelist", path, schema.getPath());
 			else if (!whitelist && containsIgnoreCase(list, str))
-				throw new ValidatorException("String at '" + node.getPath() + "' is in blacklist");
+				throw new ValidatorException("String at '" + node.getPath() + "' is in blacklist", path, schema.getPath());
 		} else if (type.equalsIgnoreCase("num")) {
 			if (!node.isNumber())
-				throw new ValidatorException("Type mismatch: node '" + node.getPath() + "' is not a number");
+				throw new ValidatorException("Type mismatch: node '" + node.getPath() + "' is not a number", path, schema.getPath());
 			
 			if (!schema.isCollection("ranges"))
 				return true;
@@ -126,17 +156,17 @@ public class YamlValidator {
 			YamlCollection ranges = schema.getCollection("ranges");
 			double num = node.asDouble();
 			if (!matchesRanges(num, ranges))
-				throw new ValidatorException("Integer at '" + node.getPath() + "' did not match any of the given ranges");
+				throw new ValidatorException("Integer at '" + node.getPath() + "' did not match any of the given ranges", path, schema.getPath());
 		} else if (type.equalsIgnoreCase("map")) {
 			if (!node.isSection())
-				throw new ValidatorException("Node '" + node.getPath() + "' is not a map/section");
+				throw new ValidatorException("Node '" + node.getPath() + "' is not a map/section", path, schema.getPath());
 			
 			if (!schema.isSet("map"))
 				return true;
 			
 			return validateContainer(schema.getNode("map"), node);
 		} else {
-			throw new ValidatorException("Unknown type '" + type + "' (schema: '" + schema.getPath() + "')");
+			throw new ValidatorException("Unknown type '" + type + "'", path, schema.getPath());
 		}
 		
 		return true;

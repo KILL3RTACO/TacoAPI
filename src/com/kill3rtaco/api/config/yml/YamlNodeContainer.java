@@ -45,6 +45,8 @@ public abstract class YamlNodeContainer implements Iterable<YamlNode> {
 	}
 	
 	protected YamlNode addNode(String name) {
+		if (name == null || name.isEmpty())
+			throw new IllegalArgumentException("name cannot be null or empty");
 		YamlNode node = new YamlNode(this, name);
 		_children.add(node);
 		return node;
@@ -89,6 +91,7 @@ public abstract class YamlNodeContainer implements Iterable<YamlNode> {
 				}
 				node.set(obj);
 			}
+//			System.out.println(node);
 		}
 	}
 	
@@ -105,8 +108,7 @@ public abstract class YamlNodeContainer implements Iterable<YamlNode> {
 	}
 	
 	/**
-	 * Get a node from this container, and optionally create it if it doesn't
-	 * exist
+	 * Get a node from this container, and optionally create it if it doesn't exist
 	 * 
 	 * @param path
 	 *            the path to the node
@@ -115,9 +117,8 @@ public abstract class YamlNodeContainer implements Iterable<YamlNode> {
 	 * @return the node
 	 * @since TacoAPI/Config 1.0
 	 * @throws IllegalArgumentException
-	 *             if the path is empty, null, or ends in a '.' Note that if
-	 *             this container is a YamlNode, passing null or and empty
-	 *             String as path will result in this node being returned
+	 *             if the path is empty, null, or ends in a '.' Note that if this container is a YamlNode, passing null
+	 *             or and empty String as path will result in this node being returned
 	 */
 	public YamlNode getNode(String path, boolean create) {
 		if (path == null || path.isEmpty())
@@ -481,6 +482,21 @@ public abstract class YamlNodeContainer implements Iterable<YamlNode> {
 			return def;
 		}
 		return getNode(path).asIntList();
+	}
+	
+	public List<Object> getList(String path) {
+		if (!isSet(path))
+			return new ArrayList<Object>();
+		return getNode(path).asList();
+	}
+	
+	public List<Object> getList(String path, List<Object> def) {
+		if (!isSet(path)) {
+			if (_options.saveDefaults)
+				set(path, def);
+			return def;
+		}
+		return getNode(path).asList();
 	}
 	
 	public String getString(String path) {

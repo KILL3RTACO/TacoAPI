@@ -33,8 +33,8 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Get the parent of this node. Note that if this node is a root node, this
-	 * will return the same Object as {@code getRoot()}.
+	 * Get the parent of this node. Note that if this node is a root node, this will return the same Object as
+	 * {@code getRoot()}.
 	 * 
 	 * @return the parent, which can be another YamlNode or a YamlDocument
 	 * @since TacoAPI/Config 1.0
@@ -67,9 +67,8 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Get the path to this node, starting from the root of the document. Note
-	 * that if this node is a root node, this method will return the same result
-	 * as {@code getName()}.
+	 * Get the path to this node, starting from the root of the document. Note that if this node is a root node, this
+	 * method will return the same result as {@code getName()}.
 	 * 
 	 * @return the absolute path to the node
 	 * @since
@@ -86,9 +85,8 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Set the comment for this node. The comment will be displayed above the
-	 * node when the document is saved. Comments can have multiple lines by
-	 * using {@code \n}
+	 * Set the comment for this node. The comment will be displayed above the node when the document is saved. Comments
+	 * can have multiple lines by using {@code \n}
 	 * 
 	 * @param comment
 	 *            the comment
@@ -119,8 +117,7 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Returns true if this node is a container node, meaning that it stores
-	 * other nodes
+	 * Returns true if this node is a container node, meaning that it stores other nodes
 	 * 
 	 * @return true if this node contains other nodes
 	 * @since TacoAPI/Config 1.0
@@ -130,8 +127,7 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Returns true if the value of this node can be cast to a number (i.e.
-	 * int/double)
+	 * Returns true if the value of this node can be cast to a number (i.e. int/double)
 	 * 
 	 * @return true if the value of this node can be converted to a number
 	 * @since TacoAPI/Config 1.0
@@ -151,9 +147,8 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Returns true if the value of this node is a list. It is important to note
-	 * that any node can be converted to a list, this method is used to
-	 * determine whether this node's value is strictly a list.
+	 * Returns true if the value of this node is a list. It is important to note that any node can be converted to a
+	 * list, this method is used to determine whether this node's value is strictly a list.
 	 * 
 	 * @return true if the value if the value of this node is a list
 	 * @since TacoAPI/Config 1.0
@@ -163,9 +158,8 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Set the value of this node. Note that, in the event that a map is given
-	 * as a value, the node assumes that the map is an instance of Map<String,
-	 * Object>, and adds nodes to itself accordingly
+	 * Set the value of this node. Note that, in the event that a map is given as a value, the node assumes that the map
+	 * is an instance of Map<String, Object>, and adds nodes to itself accordingly
 	 * 
 	 * @param value
 	 *            the new value of this node
@@ -213,8 +207,8 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Get the value of this node as a boolean list. Note that even if this node
-	 * fails {@code isSection()}, its value will be added to the returned list
+	 * Get the value of this node as a boolean list. Note that even if this node fails {@code isSection()}, its value
+	 * will be added to the returned list
 	 * 
 	 * @return the value of this node as a boolean list
 	 * @since TacoAPI/Config 1.0
@@ -226,8 +220,7 @@ public class YamlNode extends YamlNodeContainer {
 	/**
 	 * Get the value of this node as a collection
 	 * 
-	 * @return this node's value as a collection, or null if the value is not a
-	 *         collection
+	 * @return this node's value as a collection, or null if the value is not a collection
 	 * @since TacoAPI/Config 1.0
 	 */
 	public YamlCollection asCollection() {
@@ -239,8 +232,7 @@ public class YamlNode extends YamlNodeContainer {
 	/**
 	 * Get the value of this node as an integer.
 	 * 
-	 * @return The value of this node as an integer, or 0 if the value is not an
-	 *         integer
+	 * @return The value of this node as an integer, or 0 if the value is not an integer
 	 * @since TacoAPI/Config 1.0
 	 */
 	public int asInt() {
@@ -248,11 +240,9 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Get the value of this node as an integer list. Note that even if this
-	 * node fails {@code isSection()}, its value will be added to the returned
-	 * list. If the value of this node is already a list, then only those values
-	 * that pass the leniency test for an integer are added to the list. Note
-	 * that the returned list will never be null.
+	 * Get the value of this node as an integer list. Note that even if this node fails {@code isSection()}, its value
+	 * will be added to the returned list. If the value of this node is already a list, then only those values that pass
+	 * the leniency test for an integer are added to the list. Note that the returned list will never be null.
 	 * 
 	 * @return the value of this node as an integer list
 	 * @since TacoAPI
@@ -272,11 +262,9 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Get the value of this node as a double list. Note that even if this node
-	 * fails {@code isSection()}, its value will be added to the returned list.
-	 * If the value of this node is already a list, then only those values that
-	 * pass the leniency test for an double are added to the list. Note that the
-	 * returned list will never be null.
+	 * Get the value of this node as a double list. Note that even if this node fails {@code isSection()}, its value
+	 * will be added to the returned list. If the value of this node is already a list, then only those values that pass
+	 * the leniency test for an double are added to the list. Note that the returned list will never be null.
 	 * 
 	 * @return the value of theis node as a double list
 	 * @since TacoAPI/Config 1.0
@@ -286,9 +274,8 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Get the value of this node as a String. Note that this may not always
-	 * return the same result as {@code asObject.toString()}, but it better to
-	 * use this method instead.
+	 * Get the value of this node as a String. Note that this may not always return the same result as
+	 * {@code asObject.toString()}, but it better to use this method instead.
 	 * 
 	 * @return the value of this node as a String
 	 * @since TacoAPI/Config 1.0
@@ -298,11 +285,9 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Get the value of this node as a string list. Note that even if this node
-	 * fails {@code isSection()}, its value will be added to the returned list.
-	 * If the value of this node is already a list, then the values are
-	 * converted to Strings and then added to the list. Note that the returned
-	 * list will never be null.
+	 * Get the value of this node as a string list. Note that even if this node fails {@code isSection()}, its value
+	 * will be added to the returned list. If the value of this node is already a list, then the values are converted to
+	 * Strings and then added to the list. Note that the returned list will never be null.
 	 * 
 	 * @return the value of this node as a string list
 	 * @since TacoAPI/Config 1.0
@@ -312,11 +297,13 @@ public class YamlNode extends YamlNodeContainer {
 	}
 	
 	public Map<String, Object> toMap() {
-		if (isSection())
-			return super.toMap();
-		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put(getName(), asObject());
+		if (isSection())
+			map.put(getName(), super.toMap());
+		else if (isCollection())
+			map.put(getName(), asCollection().toMapList());
+		else
+			map.put(getName(), asObject());
 		return map;
 	}
 	

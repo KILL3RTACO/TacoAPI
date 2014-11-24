@@ -24,8 +24,8 @@ public class YamlDocument extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Construct a YamlDocument from a file, loading its contents. The
-	 * constructed YamlDocument can then be saved via {@code save()}
+	 * Construct a YamlDocument from a file, loading its contents. The constructed YamlDocument can then be saved via
+	 * {@code save()}
 	 * 
 	 * @param file
 	 *            the file to load from
@@ -59,8 +59,8 @@ public class YamlDocument extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Construct a YamlDocument from a raw map. Nodes and Collections are
-	 * recursively added to the document, based on its contents
+	 * Construct a YamlDocument from a raw map. Nodes and Collections are recursively added to the document, based on
+	 * its contents
 	 * 
 	 * @param map
 	 *            the raw data
@@ -96,8 +96,7 @@ public class YamlDocument extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Set the header of the document. The header is displayed at the top of the
-	 * file when it is saved.
+	 * Set the header of the document. The header is displayed at the top of the file when it is saved.
 	 * 
 	 * @param header
 	 *            the header, or null to remove it
@@ -150,8 +149,7 @@ public class YamlDocument extends YamlNodeContainer {
 	}
 	
 	/**
-	 * Save this document. This method will only return true if the save file is
-	 * not null.
+	 * Save this document. This method will only return true if the save file is not null.
 	 * 
 	 * @return true if the document was successfully saved.
 	 * @since TacoAPI/Config 1.0

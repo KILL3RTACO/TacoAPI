@@ -7,9 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Represents a Collection. A Collection translates to List&lt;Map&lt;String,
- * Object&gt;&gt; in Java, but since that is hard to manage, this class was
- * created to represent it.
+ * Represents a Collection. A Collection translates to List&lt;Map&lt;String, Object&gt;&gt; in Java, but since that is
+ * hard to manage, this class was created to represent it.
  * 
  * @author KILL3RTACO
  *
@@ -97,6 +96,7 @@ public class YamlCollection implements Iterable<YamlCollectionEntry> {
 			for (YamlNode n : c) {
 				map.putAll(n.toMap());
 			}
+			friendly.add(map);
 		}
 		return friendly;
 	}

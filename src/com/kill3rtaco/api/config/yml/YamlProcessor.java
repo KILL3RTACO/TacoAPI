@@ -119,9 +119,7 @@ class YamlProcessor {
 					dump = dump.substring(0, dump.length() - indentPrefix.length());
 				}
 				writer.append(indentPrefix + n.getName() + ": " + dump);
-				System.out.println(n.getName() + ": " + indent);
 			} else {
-				System.out.println(n.getName() + ": " + indent);
 				writer.append(indentPrefix + n.getName() + ":" + NEWLINE);
 				dumpNodeList(writer, n.getNodes(), ++indent);
 				indent--;
